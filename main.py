@@ -37,7 +37,7 @@ def send_data():
         c = conn.cursor()
         c.execute("INSERT INTO facilitadores (nome, email, cel, nasc) VALUES (?,?,?,?)", (nome, email,cel,nasc))
         conn.commit()
-        return render_template("add.html", fb = "Facilitador Cadastrado")
+        return redirect('/')
 
 @app.route('/show_data/<int:id>/', methods = ['GET'])
 def show_data(id):
