@@ -1,3 +1,4 @@
+#!/bin/env python
 
 import sqlite3
 from flask import Flask, request, render_template, redirect
