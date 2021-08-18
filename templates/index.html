@@ -33,18 +33,20 @@
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
+                        <th>Email</th>
                         <th>Data de Nascimento</th>
                         <th class="actions">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for i in facilitadores %}
+                    {% for i in facilitadores: %}
                     <tr>
-                        <td>{{i[0]}}</td>
-                        <td>{{i[1]}}</td>
-                        <td>{{i[2]}}</td>
-                        <td class="actions">
-                            <a class="btn btn-success btn-xs" href="">Visualizar</a>
+                        <td class=" col-2">{{i['id']}}</td>
+                        <td class=" col-3">{{i['nome']}}</td>
+                        <td class=" col-3">{{i['email']}}</td>
+                        <td class=" col-3">{{i['nasc']}}</td>
+                        <td class="actions col-3">
+                            <a class="btn btn-success btn-xs" href="/show_data/{{i['id']}}">Visualizar</a>
                             <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
                             <a class="btn btn-danger btn-xs" href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
                         </td>
@@ -91,10 +93,4 @@
         </div>
     </div>
 </div>
-
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-</body>
-
-</html>
 {% endblock%}

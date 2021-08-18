@@ -1,16 +1,26 @@
 
 import sqlite3
-from flask import Flask, request, render_template #, make_response
-# from flask_restful import Resource, Api
-
+from flask import Flask, request, render_template
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     conn = sqlite3.connect('facilitadores.db')
     c = conn.cursor()
-    c.execute("SELECT id,nome,email,cel,nasc FROM facilitadores")
-    facilitadores = list(c.fetchall())
+    c.execute("SELECT name FROM pragma_table_info('facilitadores')")
+    keys = c.fetchall()
+    key_list = []
+    for i in keys:
+        key_list.append(i[0])
+    c.execute("SELECT * FROM facilitadores")
+    values = c.fetchall()
+    conn.commit()
+    facilitadores = []
+    for row in values:
+        item = {}
+        for i in range(len(key_list)):
+            item[key_list[i]] = row[i]
+        facilitadores.append(item)
     return render_template("index.html" , facilitadores = facilitadores)
 
 @app.route('/send_data', methods = ['POST', 'GET'])
@@ -30,8 +40,20 @@ def send_data():
 
 @app.route('/show_data/<int:id>/', methods = ['GET'])
 def show_data(id):
-    print("show data {}".format(id))
-    return render_template("view.html")
+    conn = sqlite3.connect('facilitadores.db')
+    c = conn.cursor()
+    c.execute("SELECT name FROM pragma_table_info('facilitadores')")
+    keys = c.fetchall()
+    key_list = []
+    for i in keys:
+        key_list.append(i[0])
+    c.execute("SELECT * FROM facilitadores WHERE id = {}".format(id))
+    row = c.fetchall()
+    item = {}
+    for i in range(len(key_list)):
+        item[key_list[i]] = row[0][i]
+    conn.commit()
+    return render_template("view.html", item = item)
 
 if __name__ == '__main__':
     app.run(debug=True)
