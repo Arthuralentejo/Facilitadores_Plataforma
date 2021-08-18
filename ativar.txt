@@ -1,1 +1,0 @@
-C:\Users\user\.virtualenvs\devApi\Scripts\activate

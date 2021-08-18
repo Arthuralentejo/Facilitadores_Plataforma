@@ -47,7 +47,7 @@
                         <td class=" col-3">{{i['nasc']}}</td>
                         <td class="actions col-3">
                             <a class="btn btn-success btn-xs" href="/show_data/{{i['id']}}">Visualizar</a>
-                            <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
+                            <a class="btn btn-warning btn-xs" href="/edit/{{i['id']}}">Editar</a>
                             <a class="btn btn-danger btn-xs" href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
                         </td>
                     </tr>
@@ -81,10 +81,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="modalLabel">Excluir Item</h4>
+                <h4 class="modal-title" id="modalLabel">Excluir cadastro</h4>
             </div>
             <div class="modal-body">
-                Deseja realmente excluir este item?
+                Deseja realmente excluir este cadastro?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Sim</button>
