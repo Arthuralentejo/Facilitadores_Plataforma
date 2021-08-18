@@ -28,9 +28,10 @@ def send_data():
         conn.commit()
         return render_template("add.html", fb = "Facilitador Cadastrado")
 
-@app.route('/show_data', methods = ['GET'])
-def show_data():
-    return render_template()
+@app.route('/show_data/<int:id>/', methods = ['GET'])
+def show_data(id):
+    print("show data {}".format(id))
+    return render_template("view.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
