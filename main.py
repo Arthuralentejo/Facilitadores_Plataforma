@@ -100,19 +100,6 @@ def edit(id):
 def delete():
     conn = sqlite3.connect('facilitadores.db')
     c = conn.cursor()
-    # c.execute("SELECT name FROM pragma_table_info('facilitadores')")
-    # keys = c.fetchall()
-    # key_list = []
-    # for i in keys:
-    #     key_list.append(i[0])
-    # c.execute("SELECT * FROM facilitadores")
-    # values = c.fetchall()
-    # facilitadores = []
-    # for row in values:
-    #     item = {}
-    #     for i in range(len(key_list)):
-    #         item[key_list[i]] = row[i]
-    #     facilitadores.append(item)
     apaga = request.form['id']
     c.execute("DELETE FROM facilitadores WHERE id = {}".format(apaga))
     conn.commit()

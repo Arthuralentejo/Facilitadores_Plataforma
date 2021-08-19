@@ -42,8 +42,11 @@
                 <div class="modal-body">
                     Deseja realmente excluir este cadastro?
                 </div>
+                <form id="fdel" action="{{ url_for('delete') }}" method="POST">
+                    <input style="display: none;" type="text" name="id" value="{{item['id']}}">
+                </form>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Sim</button></form>
+                    <button type="submit" class="btn btn-primary" onClick="document.getElementById('fdel').submit();">Sim</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
                 </div>
             </div>

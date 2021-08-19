@@ -7,14 +7,14 @@
         </div>
         <div class="col-sm-6">
 
-            <!-- <div class="input-group h2">
+            <div class="input-group h2">
                 <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
                 <span class="input-group-btn">
 					<button class="btn btn-primary" type="submit">
 						<span class="glyphicon glyphicon-search"></span>
                 </button>
                 </span>
-            </div> -->
+            </div>
 
         </div>
         <div class="col-sm-3">
@@ -48,10 +48,10 @@
                         <td class="actions col-3">
                             <a class="btn btn-success btn-xs" href="/show_data/{{i['id']}}">Visualizar</a>
                             <a class="btn btn-warning btn-xs" href="/edit/{{i['id']}}">Editar</a>
-                            <a class="btn btn-danger btn-xs" href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+                            <a class="btn btn-danger  btn-xs" onclick="document.getElementById('d').value = {{ i['id'] }}" href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
                         </td>
                     </tr>
-                    {% endfor %}
+                    <input type="hidden" id="delete_{{i['id']}}" value=""> {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -86,8 +86,11 @@
             <div class="modal-body">
                 Deseja realmente excluir este cadastro?
             </div>
+            <form id="fdel" action="{{ url_for('delete') }}" method="POST">
+                <input id="d" style="display: none;" type="text" name="id" value="">
+            </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Sim</button>
+                <button type="submit" class="btn btn-primary" onClick="document.getElementById('fdel').submit();">Sim</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
             </div>
         </div>

@@ -9,6 +9,8 @@
 
     <link type="text/css" href="{{ url_for('static',filename='styles/bootstrap.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ url_for('static',filename='styles/style.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
 </head>
 
 <body>
@@ -36,9 +38,6 @@
     </nav>
 
     {% block content %} {% endblock %}
-
-    <script src="{{ url_for('static',filename='js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
 </body>
 
 </html>
