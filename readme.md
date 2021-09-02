@@ -6,3 +6,4 @@
 
    * Python 3 instalado
    * Git bash ou algum terminal linux
+
